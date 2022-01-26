@@ -1,0 +1,7 @@
+name: build_project
+on: 
+  push:
+    branches:
+      - ci-cd
+jobs:
+
