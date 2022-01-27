@@ -7,5 +7,5 @@ jobs:
   test:
    runs-on: ubuntu-latest
    steps:
-     - run: echo "Hello World!"
+     - run: echo "So where are the server?"
 
