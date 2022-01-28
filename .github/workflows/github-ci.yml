@@ -8,4 +8,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - run: echo "So where are the server?"
-
+       with: 
+        ip: ${{ secrets.IP }}$
+        username: ${{ secrets.USER }}$
+        password: ${{ secrets.PASSWORD }}$
