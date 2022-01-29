@@ -7,8 +7,18 @@ jobs:
   test:
    runs-on: ubuntu-latest
    steps:
-     - run: echo "So where are the server?"
-       with: 
-        ip: ${{ secrets.IP }}$
-        username: ${{ secrets.USER }}$
-        password: ${{ secrets.PASSWORD }}$
+   - name: update
+     uses: appleboy/ssh-action@master
+     with: 
+         script: |
+          cd covid19-prediction
+          git pull
+          cd ../COVID-19
+          git pull
+         host: ${{ secrets.IP }}$
+         username:  ${{ secrets.USER }}$
+         key: ${{ secrets.PASSWORD }}$
+
+
+
+
