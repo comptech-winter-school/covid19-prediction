@@ -11,13 +11,13 @@ jobs:
      uses: appleboy/ssh-action@master
      with: 
          script: |
-          cd covid19-prediction
+          cd ~/covid19-prediction
           git pull
-          cd ../COVID-19
+          cd ~/COVID-19
           git pull
          host: ${{ secrets.IP }}$
          username:  ${{ secrets.USER }}$
-         key: ${{ secrets.PASSWORD }}$
+         password: ${{ secrets.PASSWORD }}$
 
 
 
