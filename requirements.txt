@@ -1,4 +1,4 @@
-#    pip3-compile --output-file=requirements.txt requirements.in
+#    pip-compile --output-file=requirements.txt requirements.in
 
 python3  # version 3.8.2-4
 
