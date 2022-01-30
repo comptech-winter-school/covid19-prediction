@@ -10,7 +10,11 @@ jobs:
    - name: update
      uses: appleboy/ssh-action@master
      with: 
-         script: ls
+         script: |
+          cd ~/covid19-prediction
+          git pull
+          cd ~/COVID-19
+          git pull
          host: ${{ secrets.IP }}
          username:  ${{ secrets.USER }}
          password: ${{ secrets.PASSWORD }}
