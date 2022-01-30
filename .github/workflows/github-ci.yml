@@ -11,9 +11,9 @@ jobs:
      uses: appleboy/ssh-action@master
      with: 
          script: ls
-         host: ${{ secrets.IP }}$
-         username:  ${{ secrets.USER }}$
-         password: ${{ secrets.PASSWORD }}$
+         host: ${{ secrets.IP }}
+         username:  ${{ secrets.USER }}
+         password: ${{ secrets.PASSWORD }}
          port: 22
 
 
