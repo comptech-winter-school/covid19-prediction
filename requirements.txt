@@ -13,12 +13,15 @@ doit==0.34.1
 numpy==1.22.1
     # via
     #   pandas
+    #   pyarrow
     #   scipy
 pandas==1.4.0
     # via -r requirements.in
 pep517==0.12.0
     # via pip-tools
 pip-tools==6.4.0
+    # via -r requirements.in
+pyarrow==6.0.1
     # via -r requirements.in
 pyinotify==0.9.6
     # via doit
