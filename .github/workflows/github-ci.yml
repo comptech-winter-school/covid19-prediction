@@ -2,7 +2,7 @@ name: build_project
 on: 
   push:
     branches:
-      - ci-cd
+      - main
 jobs: 
   test:
    runs-on: ubuntu-latest
