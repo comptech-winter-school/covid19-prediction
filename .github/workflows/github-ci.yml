@@ -11,7 +11,7 @@ jobs:
      uses: appleboy/ssh-action@master
      with: 
          script: 
-          cd ~/covid19-prediction && git pull && deploy.sh
+          cd ~/covid19-prediction && git pull && bash ./deploy.sh
          host: ${{ secrets.IP }}
          username:  ${{ secrets.USER }}
          password: ${{ secrets.PASSWORD }}
