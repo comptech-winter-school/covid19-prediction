@@ -4,3 +4,4 @@ tmp
 *.csv
 *.parquet
 __pycache__
+*.env
