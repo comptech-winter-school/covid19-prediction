@@ -11,7 +11,7 @@ jobs:
      uses: appleboy/ssh-action@master
      with: 
          script: 
-          cd ~COVID-19 && git pull
+          cd COVID-19 && git pull
           cd ~covid19-prediction && git pull
           covid19-prediction/venv/bin/pip-sync
           echo "ACCESS_KEY_ID=${{ secrets.ACCESS_KEY_ID }}" > covid19-prediction/.env
