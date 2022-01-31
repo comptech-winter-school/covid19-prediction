@@ -9,21 +9,15 @@ def task_download_data():
 
 def task_prepare_data():
     return {
-        'actions': ["papermill prepare_data.ipynb out/prepare_data.ipynb"],
-        'file_dep': ['COVID-19/.git/refs/heads/master', 'prepare_data.ipynb'],
+        'actions': ["venv/bin/python prepare_data.py"],
+        'file_dep': ['COVID-19/.git/refs/heads/master', 'prepare_data.py'],
         'targets': ['tmp/data.parquet']
     }
 
+
 def task_find_lag():
     return {
-        'actions': ["papermill find_lag.ipynb out/find_lag.ipynb"],
-        'file_dep': ['tmp/data.parquet', 'find_lag.ipynb', 'consts.py'],
+        'actions': ["venv/bin/python find_lag.py"],
+        'file_dep': ['tmp/data.parquet', 'find_lag.py', 'consts.py'],
         'targets': ['tmp/lags.json']
     }
-
-# def task_predict():
-#     return {
-#         'actions': ["papermill predict.ipynb out/predict.ipynb"],
-#         'file_dep': ['tmp/data.parquet', 'predict.ipynb', 'consts.py'],
-#         'targets': ['tmp/lags.json']
-#     }
