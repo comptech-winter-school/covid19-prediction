@@ -13,7 +13,7 @@ jobs:
          script: |
           cd ~/covid19-prediction && git pull
           cd ~/COVID-19 && git pull
-          venv/bin/pip-sync
+          [sudo] dpkg -i *.rpm
           echo "ACCESS_KEY_ID=${{ secrets.ACCESS_KEY_ID }}" > covid19-prediction/.env
           echo "SECRET_ACCESS_KEY_ID=${{ secrets.SECRET_ACCESS_KEY_ID }}" >> covid19-prediction/.env
           venv/bin/doit
