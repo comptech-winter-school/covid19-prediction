@@ -4,6 +4,8 @@
 #
 #    pip-compile requirements.in
 #
+click==8.0.3
+    # via pip-tools
 cloudpickle==2.0.0
     # via doit
 doit==0.34.1
@@ -13,6 +15,10 @@ numpy==1.22.1
     #   pandas
     #   scipy
 pandas==1.4.0
+    # via -r requirements.in
+pep517==0.12.0
+    # via pip-tools
+pip-tools==6.4.0
     # via -r requirements.in
 pyinotify==0.9.6
     # via doit
@@ -24,3 +30,11 @@ scipy==1.7.3
     # via -r requirements.in
 six==1.16.0
     # via python-dateutil
+tomli==2.0.0
+    # via pep517
+wheel==0.37.1
+    # via pip-tools
+
+# The following packages are considered to be unsafe in a requirements file:
+# pip
+# setuptools
