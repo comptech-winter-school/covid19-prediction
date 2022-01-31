@@ -10,7 +10,7 @@ jobs:
    - name: update
      uses: appleboy/ssh-action@master
      with: 
-         script: |
+         script: 
           cd ~/covid19-prediction && git pull
           cd ~/COVID-19 && git pull
           covid19-prediction/venv/bin/pip-sync
@@ -21,6 +21,7 @@ jobs:
          username:  ${{ secrets.USER }}
          password: ${{ secrets.PASSWORD }}
          port: 22
+
 
 
 
