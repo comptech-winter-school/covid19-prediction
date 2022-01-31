@@ -1,0 +1,18 @@
+name: build_project
+on: 
+  push:
+    branches:
+      - ci-cd
+jobs: 
+  test:
+   runs-on: ubuntu-latest
+   steps:
+   - name: update
+     uses: appleboy/ssh-action@master
+     with: 
+         script: 
+          cd ~/covid19-prediction && git pull && deploy.sh
+         host: ${{ secrets.IP }}
+         username:  ${{ secrets.USER }}
+         password: ${{ secrets.PASSWORD }}
+         port: 22
