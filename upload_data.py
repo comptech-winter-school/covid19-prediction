@@ -14,5 +14,6 @@ s3 = session.client(
 )
 
 directory = Path('tmp')
-for file in directory.glob('*.csv'):
-    s3.upload_file(str(file.absolute()), bucket_name, file.name)
+for pattern in ['*.csv', '*.json']:
+    for file in directory.glob(pattern):
+        s3.upload_file(str(file.absolute()), bucket_name, file.name)
