@@ -65,6 +65,6 @@ def task_upload_data():
 
 def task_upload_to_db():
     return {
-        "actions": ["venv/bin/python data_to_db.py"],
-        "file_dep": ["tmp/russia_relations.csv", "data_to_db.py"],
+        "actions": ["venv/bin/python data_to_db.py", "venv/bin/python vacc_data_to_db.py"],
+        "file_dep": ["tmp/russia_relations.csv", "data_to_db.py", "vacc_data_to_db.py"],
     }
