@@ -10,8 +10,8 @@ from scipy.signal import savgol_filter
 
 from consts import predict_days
 
-if not Path('tmp').exists():
-    os.mkdir('tmp')
+if not Path("tmp").exists():
+    os.mkdir("tmp")
 
 
 df = pd.read_parquet("tmp/data.parquet")
@@ -54,10 +54,10 @@ for c_one, c_two in pairs:
     if lag < 0:
         c_two, c_one = c_one, c_two
     if (similarity > threshold) and (lag not in [-30, 30, 0]):
-        result[c_two][c_one] = {'similarity': similarity, 'lag': lag}
+        result[c_two][c_one] = {"similarity": similarity, "lag": lag}
 
-with open('tmp/lags.json', 'w') as f:
-    json.dump(result, f, sort_keys=True, indent='  ')
+with open("tmp/lags.json", "w") as f:
+    json.dump(result, f, sort_keys=True, indent="  ")
 
-with open('tmp/cases.json', 'wb') as f:
+with open("tmp/cases.json", "wb") as f:
     pickle.dump(new_cases, f)
