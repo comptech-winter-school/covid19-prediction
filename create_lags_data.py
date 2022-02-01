@@ -39,10 +39,25 @@ def remove_positive(df):
     return df[df["Lag"] < 0]
 
 
+def change_coords(df):
+    mapping = {
+        "United Kingdom": (53.669806, -2.043880),
+        "France": (46.061738, 1.792240),
+        "Norway": (65.516408, 13.925926),
+        "Netherlands": (52.583765, 5.874290),
+    }
+    for country, values in mapping.items():
+        df.loc[df["COUNTRYAFF"] == country, ["latitude", "longitude"]] = values
+
+    return df
+
+
 with open("tmp/lags.json") as f:
     lags = json.load(f)
+
 coords = (
     pd.read_csv(COORDS)
+    .pipe(change_coords)
     .groupby(by="COUNTRYAFF")
     .agg({"longitude": np.mean, "latitude": np.mean})
 )

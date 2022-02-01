@@ -11,10 +11,13 @@ jobs:
      uses: appleboy/ssh-action@master
      with: 
          script:
-          echo 'ACCESS_KEY_ID=${{ secrets.ACCESS_KEY_ID }}' > ~/covid19-prediction/.env
-          echo 'SECRET_ACCESS_KEY_ID=${{ secrets.SECRET_ACCESS_KEY_ID }}' >> ~/covid19-prediction/.env
-          echo 'DB=${{ secrets.DB }}' >> ~/covid19-prediction/.env
-          cd ~/covid19-prediction && git pull && bash ./deploy.sh
+          cd covid19-prediction && git pull
+          echo 'ACCESS_KEY_ID=${{ secrets.ACCESS_KEY_ID }}' > .env
+          echo 'SECRET_ACCESS_KEY_ID=${{ secrets.SECRET_ACCESS_KEY_ID }}' >> .env
+          echo 'DB=${{ secrets.DB }}' >> .env
+          source venv/bin/activate
+          pip-sync
+          doit
          host: ${{ secrets.IP }}
          username:  ${{ secrets.USER }}
          password: ${{ secrets.PASSWORD }}
