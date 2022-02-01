@@ -1,3 +1,12 @@
+"""
+Данные для визуализации на карте - tmp/{country}_relations.csv (например russia_relations.csv)
+Формат: "Main", "Страна",
+"Отставание/опережение (дней)",
+"Степень уверенности (из 10)",
+"longitude", "latitude"
+"""
+
+
 import pandas as pd
 import numpy as np
 import json
@@ -9,8 +18,8 @@ result_file = f"{country.lower()}_relations.csv"
 COORDS = "https://raw.githubusercontent.com/gavinr/world-countries-centroids/master/dist/countries.csv"
 
 
-def get_graph_data(query_country, lags):
-    c = lags[query_country]
+def get_graph_data(query_country, similarity_info):
+    c = similarity_info[query_country]
     buff_lines = []
     for k, v in c.items():
         buff_lines.append((query_country, k, v["lag"], v["similarity"]))
@@ -31,10 +40,14 @@ def remove_positive(df):
 
 with open("tmp/lags.json") as f:
     lags = json.load(f)
-
+coords = (
+    pd.read_csv(COORDS)
+    .groupby(by="COUNTRYAFF")
+    .agg({"longitude": np.mean, "latitude": np.mean})
+)
 (
     get_graph_data(country, lags)
-    .merge(pd.read_csv(COORDS), left_on="Country2", right_on="COUNTRYAFF", how="inner")
+    .merge(coords, left_on="Country2", right_on="COUNTRYAFF", how="inner")
     .loc[:, columns + ["longitude", "latitude"]]
     .pipe(to_bins)
     .pipe(remove_positive)

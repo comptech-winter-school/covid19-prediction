@@ -5,7 +5,7 @@ on:
       - main
       - new_data
 jobs: 
-  test:
+  run-pipeline:
    runs-on: ubuntu-latest
    steps:
    - name: update
