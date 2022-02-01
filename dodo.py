@@ -27,8 +27,8 @@ def task_find_lag():
 def task_create_relations():
     return {
         "actions": ["venv/bin/python create_lags_data.py"],
-        "file_dep": ["tmp/russia_relations.csv", "create_lags_data.py"],
-        "targets": ["tmp/russia_relations.csv", "tmp/lags.json"],
+        "file_dep": ["create_lags_data.py"],
+        "targets": ["tmp/russia_relations.csv"],
     }
 
 
