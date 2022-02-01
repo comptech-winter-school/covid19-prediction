@@ -2,9 +2,10 @@ import pandas as pd
 import numpy as np
 import json
 
-columns = ["Country1", "Country2", "Lag", "Degree_of_certainty"]
 country = "Russia"
-result_file = "russia_relations.csv"
+
+columns = ["Country1", "Country2", "Lag", "Degree_of_certainty"]
+result_file = f"{country.lower()}_relations.csv"
 COORDS = "https://raw.githubusercontent.com/gavinr/world-countries-centroids/master/dist/countries.csv"
 
 
@@ -24,6 +25,10 @@ def to_bins(df):
     return df
 
 
+def remove_positive(df):
+    return df[df["Lag"] < 0]
+
+
 with open("tmp/lags.json") as f:
     lags = json.load(f)
 
@@ -32,6 +37,7 @@ with open("tmp/lags.json") as f:
     .merge(pd.read_csv(COORDS), left_on="Country2", right_on="COUNTRYAFF", how="inner")
     .loc[:, columns + ["longitude", "latitude"]]
     .pipe(to_bins)
+    .pipe(remove_positive)
     .rename(
         columns={
             "Country1": "Main",
