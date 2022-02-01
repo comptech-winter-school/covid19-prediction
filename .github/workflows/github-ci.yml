@@ -10,7 +10,10 @@ jobs:
    - name: update
      uses: appleboy/ssh-action@master
      with: 
-         script: 
+         script:
+          echo 'ACCESS_KEY_ID=${{ secrets.ACCESS_KEY_ID }}' > ~/covid19-prediction/.env
+          echo 'SECRET_ACCESS_KEY_ID=${{ secrets.SECRET_ACCESS_KEY_ID }}' >> ~/covid19-prediction/.env
+          echo 'DB=${{ secrets.DB }}' >> ~/covid19-prediction/.env
           cd ~/covid19-prediction && git pull && bash ./deploy.sh
          host: ${{ secrets.IP }}
          username:  ${{ secrets.USER }}

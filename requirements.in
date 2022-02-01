@@ -5,3 +5,5 @@ pip-tools
 pyarrow
 envparse
 boto3
+pymysql
+sqlalchemy

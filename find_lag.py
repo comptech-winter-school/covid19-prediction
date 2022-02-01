@@ -72,12 +72,12 @@ for country_1, country_2 in pairs:
     cases_1, cases_2 = new_cases[country_1], new_cases[country_2]
     c1, c2 = cases_1["filtered_history"], cases_2["filtered_history"]
     values = []
-    for i in range(-29, 0, 1):
+    for i in range(-91, 0, 1):
         values.append((c1.shift(i).corr(c2), i))
     similarity, lag = max(values, key=lambda x: x[0])
     if lag < 0:
         country_2, country_1 = country_1, country_2
-    if (similarity > threshold) and (lag not in [-30, 30, 0]):
+    if (similarity > threshold) and (lag not in [-91, 30, 0]):
         result[country_2][country_1] = {"similarity": similarity, "lag": lag}
 
 with open(f"tmp/lags{'' if predict_days == 0 else f'_{predict_days}'}.json", "w") as f:
