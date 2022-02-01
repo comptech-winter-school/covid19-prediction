@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs: 
-  test:
+  run-pipeline:
    runs-on: ubuntu-latest
    steps:
    - name: update

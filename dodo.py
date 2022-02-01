@@ -18,17 +18,41 @@ def task_prepare_data():
 
 def task_find_lag():
     return {
-        "actions": ["venv/bin/python find_lag.py"],
-        "file_dep": ["tmp/data.parquet", "find_lag.py", "consts.py"],
-        "targets": ["tmp/lags.json"],
+        "actions": ["venv/bin/python find_lag.py 0"],
+        "file_dep": ["tmp/data.parquet", "find_lag.py"],
+        "targets": ["tmp/lags.json", "tmp/cases.pickle"],
+    }
+
+
+def task_find_lag_30():
+    return {
+        "actions": ["venv/bin/python find_lag.py 30"],
+        "file_dep": ["tmp/data.parquet", "find_lag.py"],
+        "targets": ["tmp/lags_30.json", "tmp/cases_30.pickle"],
+    }
+
+
+def task_find_lag_60():
+    return {
+        "actions": ["venv/bin/python find_lag.py 60"],
+        "file_dep": ["tmp/data.parquet", "find_lag.py"],
+        "targets": ["tmp/lags_60.json", "tmp/cases_60.pickle"],
+    }
+
+
+def task_find_lag_90():
+    return {
+        "actions": ["venv/bin/python find_lag.py 90"],
+        "file_dep": ["tmp/data.parquet", "find_lag.py"],
+        "targets": ["tmp/lags_90.json", "tmp/cases_90.pickle"],
     }
 
 
 def task_create_relations():
     return {
         "actions": ["venv/bin/python create_lags_data.py"],
-        "file_dep": ["tmp/russia_relations.csv", "create_lags_data.py"],
-        "targets": ["tmp/russia_relations.csv", "tmp/lags.json"],
+        "file_dep": ["create_lags_data.py"],
+        "targets": ["tmp/russia_relations.csv"],
     }
 
 
