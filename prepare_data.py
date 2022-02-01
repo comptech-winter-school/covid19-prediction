@@ -1,3 +1,13 @@
+"""
+Предобработанные данные из репозитория https://github.com/CSSEGISandData/COVID-19
+Имя файла: tmp/data.parquet
+Формат данных:
+"Last_Update" - дата, является индексом,
+"Country_Region" - страны, в которых заражений больше 100 тысяч,
+"Confirmed" - количество подтвержденных случаев COVID на момент Last_Update
+"""
+
+
 import os
 from pathlib import Path
 
