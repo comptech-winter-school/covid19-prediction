@@ -18,7 +18,7 @@ jobs:
           echo 'DB=${{ secrets.DB }}' >> .env &&
           source venv/bin/activate &&
           pip-sync &&
-          doit
+          doit &
          host: ${{ secrets.IP }}
          username:  ${{ secrets.USER }}
          password: ${{ secrets.PASSWORD }}
