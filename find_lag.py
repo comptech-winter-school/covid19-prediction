@@ -1,8 +1,10 @@
 """
-Данные о похожести стран - tmp/lags{_last_n_days}.json (например lags_30.json)
+Данные о похожести стран -
+Имя файлов: tmp/lags{_last_n_days}.json (например lags_30.json)
 Формат: {"Страна": {"Страна": {"lag": int (отрицательное число), "similarity": float}}}
 
-Данные о заражении - tmp/cases{_last_n_days}.pickle (например cases_30.pickle)
+Данные о заражении -
+Имя файлов: tmp/cases{_last_n_days}.pickle (например cases_30.pickle)
 Формат: {"Страна": {"filtered_history": pd.Series - отфильтрованные данные без последних last_n_days дней,
             "filtered_validate": pd.Series - отфильтрованные данные, полследние last_n_days дней,
             "validate": pd.Series - реальные исторические данные, последние last_n_days дней,
