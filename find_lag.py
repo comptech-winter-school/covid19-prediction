@@ -71,7 +71,7 @@ if __name__ == "__main__":
         cases_1, cases_2 = new_cases[country_1], new_cases[country_2]
         c1, c2 = cases_1["filtered_history"], cases_2["filtered_history"]
         values = []
-        for i in range(-91, 1, 1):
+        for i in range(-90, 1, 1):
             values.append((c1.shift(i).corr(c2), i))
         similarity, lag = max(values, key=lambda x: x[0])
         if lag < 0:
