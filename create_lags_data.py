@@ -52,28 +52,29 @@ def change_coords(df):
     return df
 
 
-with open("tmp/lags.json") as f:
-    lags = json.load(f)
+if __name__ == "__main__":
+    with open("tmp/lags.json") as f:
+        lags = json.load(f)
 
-coords = (
-    pd.read_csv(COORDS)
-    .pipe(change_coords)
-    .groupby(by="COUNTRYAFF")
-    .agg({"longitude": np.mean, "latitude": np.mean})
-)
-(
-    get_graph_data(country, lags)
-    .merge(coords, left_on="Country2", right_on="COUNTRYAFF", how="inner")
-    .loc[:, columns + ["longitude", "latitude"]]
-    .pipe(to_bins)
-    .pipe(remove_positive)
-    .rename(
-        columns={
-            "Country1": "Main",
-            "Country2": "Страна",
-            "Lag": "Отставание/опережение (дней)",
-            "Degree_of_certainty": "Степень уверенности (из 10)",
-        }
+    coords = (
+        pd.read_csv(COORDS)
+        .pipe(change_coords)
+        .groupby(by="COUNTRYAFF")
+        .agg({"longitude": np.mean, "latitude": np.mean})
     )
-    .to_csv(f"tmp/{result_file}")
-)
+    (
+        get_graph_data(country, lags)
+        .merge(coords, left_on="Country2", right_on="COUNTRYAFF", how="inner")
+        .loc[:, columns + ["longitude", "latitude"]]
+        .pipe(to_bins)
+        .pipe(remove_positive)
+        .rename(
+            columns={
+                "Country1": "Main",
+                "Country2": "Страна",
+                "Lag": "Отставание/опережение (дней)",
+                "Degree_of_certainty": "Степень уверенности (из 10)",
+            }
+        )
+        .to_csv(f"tmp/{result_file}")
+    )
