@@ -12,7 +12,7 @@ def task_prepare_data():
     return {
         "actions": ["venv/bin/python prepare_data.py"],
         "file_dep": ["COVID-19/.git/refs/heads/master", "prepare_data.py"],
-        "targets": ["tmp/data.parquet"],
+        "targets": ["tmp/data.parquet", "tmp/people_structure.csv"],
     }
 
 
@@ -59,7 +59,7 @@ def task_create_relations():
 def task_upload_data():
     return {
         "actions": ["venv/bin/python upload_data.py"],
-        "file_dep": ["tmp/russia_relations.csv", "tmp/lags.json", "upload_data.py"],
+        "file_dep": ["tmp/russia_relations.csv", "tmp/lags.json", "upload_data.py", "tmp/people_structure.csv"],
     }
 
 
@@ -68,5 +68,5 @@ def task_upload_to_db():
         "actions": [
             "venv/bin/python data_to_db.py",
         ],
-        "file_dep": ["tmp/russia_relations.csv", "data_to_db.py"],
+        "file_dep": ["tmp/russia_relations.csv", "data_to_db.py", "tmp/people_structure.csv"],
     }
