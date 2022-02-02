@@ -46,6 +46,11 @@ def change_coords(df):
         "Norway": (65.516408, 13.925926),
         "Netherlands": (52.583765, 5.874290),
         "Denmark": (56.062883058447404, 9.553329909933854),
+        "Australia": (-33.7481033657015, 149.2342790558317),
+        "Malaysia": (4.040268965452877, 102.0898863270543),
+        "Spain": (40.289577069220314, -3.4551207010699447),
+        "Canada": (60.17407241207174, -108.4370255907296),
+
     }
     for country, values in mapping.items():
         df.loc[df["COUNTRYAFF"] == country, ["latitude", "longitude"]] = values
