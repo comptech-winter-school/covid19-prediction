@@ -20,20 +20,7 @@ if __name__ == "__main__":
         .to_sql("countries", con=engine, index=False, if_exists="replace")
     )
 
-    df = pd.read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
-
-    loc_to_drop = [
-        "World",
-        "High income",
-        "European Union",
-        "Europe",
-        "Upper middle income",
-        "Asia",
-        "Lower middle income",
-        "Low income",
-    ]
     (
-        df.drop(["iso_code", "continent"], axis=1)
-        .drop(df.loc[df["location"].isin(loc_to_drop), :].index, axis=0)
-        .to_sql("vaccination", con=engine, index=False, if_exists="replace")
+        pd.read_csv("tmp/people_structure.csv")
+        .to_sql("people_structure", con=engine, index=False, if_exists="replace")
     )

@@ -5,6 +5,10 @@
 "Last_Update" - дата, является индексом,
 "Country_Region" - страны, в которых заражений больше 100 тысяч,
 "Confirmed" - количество подтвержденных случаев COVID на момент Last_Update
+
+Предобработанные данные https://covid.ourworldindata.org/data/owid-covid-data.csv
+Имя файла: tmp/people_structure.csv
+Формат данных: см. в репозитории https://github.com/owid/covid-19-data/tree/master/public/data
 """
 
 
@@ -46,4 +50,23 @@ if __name__ == "__main__":
         .sort_index()
         .pipe(remove_small_countries)
         .to_parquet("tmp/data.parquet")
+    )
+
+    df = pd.read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
+
+    loc_to_drop = [
+        "World",
+        "High income",
+        "European Union",
+        "Europe",
+        "Upper middle income",
+        "Asia",
+        "Lower middle income",
+        "Low income",
+    ]
+
+    (
+        df.drop(["iso_code", "continent"], axis=1)
+        .drop(df.loc[df["location"].isin(loc_to_drop), :].index, axis=0)
+        .to_csv("tmp/people_structure.csv")
     )
