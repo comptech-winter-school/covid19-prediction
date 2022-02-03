@@ -14,7 +14,7 @@ if __name__ == "__main__":
         endpoint_url="https://storage.yandexcloud.net",
     )
 
-    directory = Path("../tmp")
+    directory = Path("tmp")
     for pattern in ["*.csv", "*.json", "*.pickle", "*.parquet"]:
         for file in directory.glob(pattern):
             s3.upload_file(str(file.absolute()), bucket_name, file.name)

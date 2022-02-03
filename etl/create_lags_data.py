@@ -59,7 +59,7 @@ def change_coords(df):
 
 
 if __name__ == "__main__":
-    with open("../tmp/lags.json") as f:
+    with open("tmp/lags.json") as f:
         lags = json.load(f)
 
     coords = (

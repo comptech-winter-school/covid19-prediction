@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     engine = create_engine(env("DB"))
     (
-        pd.read_csv("../tmp/russia_relations.csv", encoding="utf8")
+        pd.read_csv("tmp/russia_relations.csv", encoding="utf8")
         .rename(
             columns={
                 "Country1": "Main",
