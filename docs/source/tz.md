@@ -1,4 +1,3 @@
-# ![COVID-19 Prediction Comptech 2022](https://via.placeholder.com/15/889eff/000000?text=+) `COVID-19 Prediction Comptech 2022`
 # Техническое задание
  
 ## Введение
