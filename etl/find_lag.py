@@ -29,10 +29,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
     predict_days = args.predict_days
 
-    if not Path("tmp").exists():
-        os.mkdir("tmp")
+    if not Path("../tmp").exists():
+        os.mkdir("../tmp")
 
-    df = pd.read_parquet("tmp/data.parquet")
+    df = pd.read_parquet("../tmp/data.parquet")
     countries = df.Country_Region.unique().tolist()
     cache = {}
 
