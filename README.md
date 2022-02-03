@@ -37,9 +37,9 @@ COVID-19 Prediction представляет собой реализацию п�
 [Ссылка на дэшборд в Yandex DataLens](https://datalens.yandex.ru/xxq1yyazn27mp-covid-19-comptech-2022)
 
 ### Зависимости
-```
-Указаны в requirements.txt.
-```
+
+Указаны в [`requirements.txt`](https://github.com/comptech-winter-school/covid19-prediction/blob/main/requirements.txt).
+
 ## Использование
 ```
 Выберите страну и временной отрезок на дэшборде и исследуйте данные
