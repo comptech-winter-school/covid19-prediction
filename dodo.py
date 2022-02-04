@@ -56,6 +56,14 @@ def task_create_relations():
     }
 
 
+def task_create_predict():
+    return {
+        "actions": ["venv/bin/python predict/get_predict.py"],
+        "file_dep": ["predict/get_predict.py"],
+        "targets": ["tmp/predict.csv"],
+    }
+
+
 def task_upload_data():
     return {
         "actions": ["venv/bin/python etl/upload_data.py"],
