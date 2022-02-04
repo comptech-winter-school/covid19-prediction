@@ -4,10 +4,10 @@ COVID-19 Prediction представляет собой реализацию п�
 «Прогнозирование заболеваемости COVID-19» в рамках зимней школы
 [CompTech School 2022](https://comptechschool.com/).
 
-## 🗂️ Папки репозитория:
-- [`.github`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/.github/workflows) - содержит конфиг настройки для Github Actions.
-- [`docs`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/docs) - содержит проектную документацию.
-- [`etl`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/etl) - содержат скрипты для работы с данными.
+## Папки и файлы репозитория:
+- 🗂️[`.github`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/.github/workflows) - папка содержит конфиг настройки для Github Actions.
+- 🗂️[`docs`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/docs) - папка содержит проектную документацию.
+- 🗂️[`etl`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/etl) - папка содержит скрипты для работы с данными.
 - [`dodo.py`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/dodo.py) - скрипт, отвечающий за последовательность выполнения скриптов для обновления данных.
 - [`requirements.in`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/requirements.in) - список библиотек для компиляции зависимостей requirements.txt с помощью библиотеки pip-tools.
 - [`requirements.txt`](https://github.com/comptech-winter-school/covid19-prediction/tree/main/requirements.txt) - список зависимостей, необходимых для работы скриптов.
