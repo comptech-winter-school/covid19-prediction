@@ -1,6 +1,6 @@
 """
 Данные для визуализации на карте -
-Имя файлов: tmp/{country}_relations.csv (например russia_relations.csv)
+Имя файлов: tmp/relations.csv
 Формат: "Main", "Страна",
 "Отставание/опережение (дней)",
 "Степень уверенности (из 10)",
@@ -12,18 +12,19 @@ import pandas as pd
 import numpy as np
 import json
 
-country = "Russia"
 
 columns = ["Country1", "Country2", "Lag", "Degree_of_certainty"]
-result_file = f"{country.lower()}_relations.csv"
+result_file = f"relations.csv"
 COORDS = "https://raw.githubusercontent.com/gavinr/world-countries-centroids/master/dist/countries.csv"
 
 
-def get_graph_data(query_country, similarity_info):
-    c = similarity_info[query_country]
+def get_graph_data(similarity_info):
     buff_lines = []
-    for k, v in c.items():
-        buff_lines.append((query_country, k, v["lag"], v["similarity"]))
+    for country in similarity_info.keys():
+        c = similarity_info[country]
+        for k, v in c.items():
+            buff_lines.append((country, k, v["lag"], v["similarity"]))
+
     res = pd.DataFrame(buff_lines, columns=columns)
     return res
 
@@ -69,7 +70,7 @@ if __name__ == "__main__":
         .agg({"longitude": np.mean, "latitude": np.mean})
     )
     (
-        get_graph_data(country, lags)
+        get_graph_data(lags)
         .merge(coords, left_on="Country2", right_on="COUNTRYAFF", how="inner")
         .loc[:, columns + ["longitude", "latitude"]]
         .pipe(to_bins)

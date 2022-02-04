@@ -34,7 +34,7 @@ def task_find_lag_30():
 
 def task_find_lag_60():
     return {
-        "actions": ["venv/bin/python find_lag.py 60"],
+        "actions": ["venv/bin/python etl/find_lag.py 60"],
         "file_dep": ["tmp/data.parquet", "etl/find_lag.py"],
         "targets": ["tmp/lags_60.json", "tmp/cases_60.pickle"],
     }
@@ -52,14 +52,14 @@ def task_create_relations():
     return {
         "actions": ["venv/bin/python etl/create_lags_data.py"],
         "file_dep": ["etl/create_lags_data.py"],
-        "targets": ["tmp/russia_relations.csv"],
+        "targets": ["tmp/relations.csv"],
     }
 
 
 def task_upload_data():
     return {
         "actions": ["venv/bin/python etl/upload_data.py"],
-        "file_dep": ["tmp/russia_relations.csv", "tmp/lags.json", "etl/upload_data.py", "tmp/people_structure.csv"],
+        "file_dep": ["tmp/relations.csv", "tmp/lags.json", "etl/upload_data.py", "tmp/people_structure.csv"],
     }
 
 
@@ -68,5 +68,5 @@ def task_upload_to_db():
         "actions": [
             "venv/bin/python etl/data_to_db.py",
         ],
-        "file_dep": ["tmp/russia_relations.csv", "etl/data_to_db.py", "tmp/people_structure.csv"],
+        "file_dep": ["tmp/relations.csv", "etl/data_to_db.py", "tmp/people_structure.csv"],
     }
