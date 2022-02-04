@@ -7,3 +7,4 @@ envparse
 boto3
 pymysql
 sqlalchemy
+httpx
