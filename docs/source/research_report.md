@@ -119,6 +119,8 @@
 ### 4.3 Визуализация
 <a name="Визуализация"></a>
 
+![](https://imageup.ru/img70/3877738/dashboard.gif)
+
 ![](https://github.com/comptech-winter-school/covid19-prediction/blob/f1bd6b1cb6fa45c4d8fd9c3f966004fb29869f1e/docs/source/dashboard.gif)
 
 Визуализация предполагала отображение на географической карте степени схожести страны с выбранной пользователем из списка и отставание сценария согласно модели. 
