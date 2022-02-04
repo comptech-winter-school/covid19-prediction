@@ -125,7 +125,7 @@
 
 ![](https://i.ibb.co/3mphLMM/2022-02-04-17-15-03.png)
 
-![](https://i.ibb.co/pWqJKZv/image.gif)
+![](https://i.yapx.ru/QcDcy.gif)
 
 ### 4.4 Другие способы прогнозирования
 <a name="Другое"></a>
