@@ -24,3 +24,8 @@ if __name__ == "__main__":
         pd.read_csv("tmp/people_structure.csv")
         .to_sql("people_structure", con=engine, index=False, if_exists="replace")
     )
+
+    (
+        pd.read_csv("tmp/predict.csv")
+        .to_sql("predict", con=engine, index=False, if_exists="replace")
+    )
