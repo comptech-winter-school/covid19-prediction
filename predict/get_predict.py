@@ -22,10 +22,9 @@ def get_train_data(countries, source_country, cases, field):
     df['y'] = cases[cases['location'] == source_country].reset_index().set_index("date")[field]
     df['ds'] = cases[cases['location'] == source_country].reset_index().set_index("date").index
     c = cases["location"].unique()
-
     for country, info in countries:
         if country in c:
-            df[country] = cases[cases["location"] == country][field]
+            df[country] = cases[cases["location"] == country].reset_index().set_index("date")[field].shift(info["lag"])
         else:
             del df[country]
     return df.fillna(method='ffill').dropna()
@@ -47,6 +46,9 @@ def get_df_future(days_predict, m, countries, cases, field, train_last):
 
 
 def get_predict(days_predict, source_country, cases, lags) -> np.array:
+    """
+    Возвращает предикт и модель Prophet
+    """
     countries = sorted(filter(lambda x: -x[1]["lag"] > days_predict, lags[source_country].items()),
                        key=lambda x: x[1]["similarity"])[-2:]
     field = 'new_cases_smoothed'
@@ -65,10 +67,10 @@ def get_predict(days_predict, source_country, cases, lags) -> np.array:
     m.fit(train)
     future = get_df_future(days_predict, m, countries, cases, field, train.index[-1])
     forecast = m.predict(future)
-
-    return forecast[['ds', 'yhat']]
+    return forecast[["ds", 'yhat']]
 # ///////////////////////////////////////////////////////////////////////
 # =======================================================================
+
 
 # =================================MEAN==================================
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
