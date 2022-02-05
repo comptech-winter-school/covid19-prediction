@@ -40,7 +40,7 @@
 
 - Для обработки данных наиболее оптимальным языком программирования показался *Python*.
 
-- Будут использоваться библиотеки *pandas, numpy*. Более подробная информация содержится в файле [`requirements.txt`](covid19-prediction/requirements.txt).
+- Будут использоваться библиотеки *pandas, numpy*. Более подробная информация содержится в файле [`requirements.txt`](https://github.com/comptech-winter-school/covid19-prediction/blob/605d2f6b671c4e371650b0bd1b0c5d5d5b276b59/requirements.txt).
 
 - Также нужна серверная среда для хранения информации.
 
