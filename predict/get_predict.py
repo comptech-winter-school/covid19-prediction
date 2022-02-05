@@ -43,6 +43,9 @@ def get_predict(days_predict, source_country, cases, lags) -> np.array:
     field = 'new_cases_smoothed'
     train = get_train_data(countries, source_country, cases, field)
 
+    if len(train) == 0:
+        return None
+
     m = Prophet(
         daily_seasonality=False,
         yearly_seasonality=True,
@@ -72,6 +75,8 @@ if __name__ == "__main__":
     df = pd.DataFrame()
     for country in lags.keys():
         predict = get_predict(days_predict, country, df_sec, lags)
+        if predict is None:
+            continue
         if index is None:
             index = predict["ds"]
 
