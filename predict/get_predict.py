@@ -209,22 +209,19 @@ if __name__ == "__main__":
     df = pd.DataFrame()
     for country in lags.keys():
         predict = get_predict(days_predict, country, df_sec, lags)
-        if predict is None:
-            continue
+
         if index is None:
-            index = predict["ds"]
+            index = predict["ds"] if predict else None
 
-            d = pd.DataFrame()
-            d["Date"] = index
-            d["Country"] = country
+        d = pd.DataFrame()
+        d["Date"] = index
+        d["Country"] = country
 
-            d["Mean_7"] = get_predict_mean(country, 7, days_predict, cases, use_filter=True)
-            d["Linear"] = get_predict_linear(country, lags, days_predict, cases)
-            d["Holt-Winters"] = hwes_predict(df_sec, country, days_predict)
-            d["Prophet"] = predict["yhat"].values
-  
-            df = pd.concat([df, d], ignore_index=True)
-        except:
-            continue
+        d["Mean_7"] = get_predict_mean(country, 7, days_predict, cases, use_filter=True)
+        d["Linear"] = get_predict_linear(country, lags, days_predict, cases)
+        d["Holt-Winters"] = hwes_predict(df_sec, country, days_predict)
+        d["Prophet"] = predict["yhat"].values if predict is not None else 0
+
+        df = pd.concat([df, d], ignore_index=True)
 
     df.to_csv("tmp/predict.csv")
