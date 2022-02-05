@@ -7,7 +7,7 @@
 | [`tz.md`](source/tz.md)      | Техническое задание        |     Документ содержит перечень требований, условий, целей, задач проекта.   |
 | [`research_report.md`](source/research_report.md) | Отчет о научно-исследовательской работе        |  Документ описывает результаты исследования.|
 
-[Отчето научно-исследовательской работе в формате PDF](https://github.com/comptech-winter-school/covid19-prediction/blob/07f1b604ebe296cfbc014dd399e546e93f3dbce9/docs/source/research_report.pdf)
+[Отчет о научно-исследовательской работе в формате PDF](https://github.com/comptech-winter-school/covid19-prediction/blob/07f1b604ebe296cfbc014dd399e546e93f3dbce9/docs/source/research_report.pdf)
 
 `README`-файл расположен в корневой папке Github-репозитория [проекта](https://github.com/comptech-winter-school/covid19-prediction).
 
