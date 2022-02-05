@@ -48,7 +48,7 @@
 - *MS SQL Server*.
 - *Oracle DB*.
 - *Yandex Database*.
- 
+
 ### Специальные требования
 
 Не предъявляются.
