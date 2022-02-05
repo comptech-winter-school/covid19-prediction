@@ -14,7 +14,7 @@ def get_train_data(countries, source_country, cases, field):
 
     for country, info in countries:
         if country in c:
-            df[country] = cases[cases["location"] == country][field]
+            df[country] = cases[cases["location"] == country].reset_index().set_index("date")[field].shift(-info["lag"])
         else:
             del df[country]
     return df.fillna(method='ffill').dropna()
@@ -69,23 +69,20 @@ if __name__ == "__main__":
     index = None
     df = pd.DataFrame()
     for country in lags.keys():
-        try:
-            predict = get_predict(days_predict, country, df_sec, lags)
-            if index is None:
-                index = predict["ds"]
+        predict = get_predict(days_predict, country, df_sec, lags)
+        if index is None:
+            index = predict["ds"]
 
-            d = pd.DataFrame()
-            d["Date"] = index
-            d["Country"] = country
-            d["Prophet"] = predict["yhat"].values
+        d = pd.DataFrame()
+        d["Date"] = index
+        d["Country"] = country
+        d["Prophet"] = predict["yhat"].values
 
-            # Здесь добавляй в Linear, Mean, Holt предикты
+        # Здесь добавляй в Linear, Mean, Holt предикты
 
-            #####
+        #####
 
-            df = pd.concat([df, d], ignore_index=True)
-        except:
-            continue
+        df = pd.concat([df, d], ignore_index=True)
 
     df.to_csv("tmp/predict.csv")
 
