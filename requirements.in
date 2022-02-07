@@ -8,3 +8,5 @@ boto3
 pymysql
 sqlalchemy
 httpx
+prophet
+statsmodels
